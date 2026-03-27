@@ -1,0 +1,18 @@
+{
+  "name": "mindreader-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for MindReader knowledge graph — use with Claude Code, Cursor, or any MCP-compatible client",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "mindreader-mcp": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  },
+  "keywords": ["mcp", "mindreader", "knowledge-graph", "claude-code", "ai-memory"],
+  "license": "MIT"
+}
