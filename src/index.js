@@ -198,13 +198,16 @@ server.tool(
     try {
       const data = await api("/api/stats");
       const lines = [];
-      if (data.nodes) {
+      if (data.nodeCounts) {
         lines.push("Nodes:");
-        for (const n of data.nodes) lines.push(`  ${n.label}: ${n.count}`);
+        for (const n of data.nodeCounts) lines.push(`  ${n.label}: ${n.count}`);
       }
-      if (data.relationships) {
+      if (data.relCounts) {
         lines.push("Relationships:");
-        for (const r of data.relationships) lines.push(`  ${r.type}: ${r.count}`);
+        for (const r of data.relCounts) lines.push(`  ${r.type}: ${r.count}`);
+      }
+      if (data.totals) {
+        lines.push(`\nTotal: ${data.totals.nodes} nodes, ${data.totals.relationships} relationships`);
       }
       return { content: [{ type: "text", text: lines.join("\n") || "No stats available." }] };
     } catch (err) {
