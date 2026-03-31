@@ -22,7 +22,8 @@ const TOKEN = process.env.MINDREADER_TOKEN || "";
 // ---------------------------------------------------------------------------
 async function api(path, options = {}) {
   const url = `${BASE_URL}${path}`;
-  const headers = { "Content-Type": "application/json" };
+  const tenantId = process.env.MINDREADER_TENANT_ID || "master";
+  const headers = { "Content-Type": "application/json", "X-Tenant-Id": tenantId };
   if (TOKEN) headers.Authorization = `Bearer ${TOKEN}`;
 
   const res = await fetch(url, { ...options, headers: { ...headers, ...options.headers } });
